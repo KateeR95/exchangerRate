@@ -179,20 +179,14 @@ namespace Galaxy.Environments
 
             foreach (BaseActor actor in actors.Where(actor => actor.CanDrop))
             {
-                if (actor is Ship || actor is Ship2 || actor is Ship3)
-                {
                     var lis1 =
                         Actors.Where((actors1) => actors1 is Ship || actors1 is Ship2 || actors1 is Ship3).ToList();
                     if (lis1.Count > 1)
                     {
-                        int number = Distance.NearestEnemy(lis1, actor);
-
-
-
-                        Actors.Remove(lis1[number]);
+                        BaseActor toRemove2 = Distance.NearestEnemyСomparison(lis1, actor);
+                        Actors.Remove(toRemove2);
                     }
 
-                }
                 Actors.Remove(actor);
             }
 

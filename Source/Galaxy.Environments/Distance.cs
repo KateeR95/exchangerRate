@@ -5,31 +5,9 @@ namespace Galaxy.Environments
 {
     internal static class Distance
     {
-        public static int NearestEnemy(List<BaseActor> lis1, BaseActor actor)
+        public static BaseActor NearestEnemyСomparison(List<BaseActor> lis1, BaseActor actor)
         {
-            int distance;
-            int number = 0;
-
-            if (lis1[0] != actor)
-            {
-                distance =
-                    Convert.ToInt32(Math.Pow(lis1[0].Position.X - actor.Position.X, 2) +
-                                    Math.Pow(lis1[0].Position.Y - actor.Position.Y, 2));
-
-            }
-            else
-            {
-                distance =
-                    Convert.ToInt32(Math.Pow(lis1[1].Position.X - actor.Position.X, 2) +
-                                    Math.Pow(lis1[1].Position.Y - actor.Position.Y, 2));
-            }
-            number = NearestEnemyСomparison(lis1, actor, distance);
-            return number;
-        }
-
-        private static int NearestEnemyСomparison(List<BaseActor> lis1, BaseActor actor, int distance)
-        {
-
+            int distance = Int32.MaxValue;
             int distance2;
 
             int number = 0;
@@ -49,7 +27,8 @@ namespace Galaxy.Environments
                 }
 
             }
-            return number;
+            BaseActor toRemove = lis1[number];
+            return toRemove;
         }
     }
 }
